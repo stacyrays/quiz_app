@@ -97,7 +97,11 @@ $(function() {
   function renderAQuestion() {
     const question = STORE.questions[questionNumber].question;
     const answers = STORE.questions[questionNumber].answers;
-    const questionHTML = $(`
+    const questionHTML = $(`<p>
+    Question <strong>${questionNumber +
+      1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
+    <strong>1</strong>
+  </p>
       <form id="js-question">
         <fieldset>
           <legend>
@@ -136,7 +140,12 @@ $(function() {
       const answerChoice = $("input:checked").val();
       if (answerChoice === correctAnswer) {
         console.log("correct is runing");
-        const resultHTML = $(`<img
+        const resultHTML = $(`
+        <p>
+        Question <strong>${questionNumber +
+          1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
+        <strong>1</strong>
+      </p><img
     src="images/${correctImg}"
     alt="namaste image"
     width="300"
@@ -148,7 +157,12 @@ $(function() {
         nextQuestion();
       } else {
         console.log("No it is not correct");
-        const resultHTML = $(` <img
+        const resultHTML = $(`
+        <p>
+        Question <strong>${questionNumber +
+          1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
+        <strong>1</strong>
+      </p><img
         src="images/${correctImg}"
     alt="namaste image"
     width="300"

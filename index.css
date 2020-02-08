@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 30px;
+  text-align: center;
+}
+
+h1 {
+  color: teal;
+  padding: 0;
+  margin: 5px;
+}
+h2 {
+  color: gray;
+  padding: 0;
+  margin: 5px;
+}
+button,
+input[type="text"] {
+  padding: 10px;
+  background-color: orangered;
+  border: 1px solid orangered;
+  border-radius: 4px;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#shopping-list-item {
+  width: 250px;
+}
+
+main {
+  padding: 30px;
+
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid teal;
+  border-radius: 12px;
+}
+
+.shopping-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.shopping-list > li {
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+}
+
+.shopping-item {
+  display: block;
+  color: grey;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.shopping-item__checked {
+  text-decoration: line-through;
+}
+
+button,
+[type="button"],
+[type="submit"] {
+  margin-top: 20px;
+}
+
+[type="radio"] {
+  margin-right: 5px;
+  margin-top: 12px;
+  text-align: left;
+}
+
+.enter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#questionAnswers {
+  flex: 1;
+}
+
+#top {
+  width: 20%;
+  height: 20%;
+}
+
+h1.inside {
+  font-size: 24px;
+}
+
+legend {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset.answers {
+  margin-top: 10px;
+}

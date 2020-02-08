@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Yoga Pose Quiz</title>
+    <link rel="shortcut icon" href="#" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <main role="main">
+      <header>
+        <img
+          id="top"
+          src="images/namaste.png"
+          alt="namaste image"
+          width="287"
+          height="343"
+        />
+        <h1 class="inside">Yoga Poses & Benefits</h1>
+      </header>
+      <div class="enter">
+        <p>
+          Question <strong>1</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
+          <strong>1</strong>
+        </p>
+        <form id="js-question">
+          <fieldset class="question">
+            <legend>
+              Which pose promotes balance and directs your attention to the
+              present moment (is the backbone for most other poses)?
+            </legend>
+          </fieldset>
+          <fieldset class="answers">
+            <input
+              type="radio"
+              id="answer1-1"
+              name="answer1-1"
+              value="Child's Pose"
+            />Child's Pose<br />
+            <input
+              type="radio"
+              id="answer1-1"
+              name="answer1-1"
+              value="Mountain pose"
+            />Mountain pose<br />
+            <input
+              type="radio"
+              id="answer1-1"
+              name="answer1-1"
+              value="Downward facing dog"
+            />Downward facing dog<br />
+
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+      <!--<div class="score_qnumber">
+        <p class="score">Your score: 0</p>
+        <p class="qnumber">You are on question 1/10</p>-->
+    </main>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>

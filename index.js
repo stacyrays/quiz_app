@@ -1,0 +1,162 @@
+$(function() {
+  const STORE = {
+    questions: [
+      {
+        question:
+          "Which pose promotes balance and directs your attention to the present moment (is the backbone for most other poses)?",
+        answers: ["Child's pose", "Mountain pose", "Downward facing dog"],
+        correctAnswer: 1
+      },
+      {
+        question:
+          "Which pose strengthens your legs, upper back, and shoulders?",
+        answers: ["Halfmoon pose", "Chair pose", "Warrior one"],
+        correctAnswer: 1
+      },
+      {
+        question:
+          "Which pose opens up your chest and shoulders, while stretching the abdominals and hip flexors?",
+        answers: ["Plank pose", "Seated forward fold", "Upward facing dog"],
+        correctAnswer: 2
+      },
+      {
+        question:
+          "Which pose helps improve concentration and your ability to balance by strengthening the arches of the feet and the outer hips?",
+        answers: ["Tree pose", "Bound ankle pose", "Warrior two"],
+        correctAnswer: 0
+      },
+      {
+        question:
+          "Which pose helps calm the mind and stretches your spine, shoulders, wrists, hips, and hamstrings?",
+        answers: [
+          "Dolphin pose",
+          "Intense side stretch",
+          "Seated forward fold"
+        ],
+        correctAnswer: 1
+      },
+      {
+        question:
+          "Which pose opens the entire front of the body, where it strengthens the muscles in your back, shoulders, and hamstrings? (Hint: it’s a backbend)",
+        answers: ["Camel pose", "Wheel pose", "Mountain pose"],
+        correctAnswer: 1
+      },
+      {
+        question:
+          "Which pose strengthens your shoulders, upper back, and abdominals?  It also promotes core and scapular stability, which is helpful if you’re working on inversions or arm balances...",
+        answers: ["Side plank", "Warrior three", "Boat pose"],
+        correctAnswer: 0
+      },
+      {
+        question:
+          "Which pose strengthens your legs, arms, and back muscles? It also gives your chest, shoulders, neck, thighs, and ankles a nice stretch...",
+        answers: ["Warrior one", "Seated forward fold", "Dolphin pose"],
+        correctAnswer: 0
+      },
+      {
+        question:
+          "Which pose helps build strength in your upper body in preparation for a headstand and forearm stand? It can also help calm your mind and relieve stress...",
+        answers: ["Camel pose", "Bound ankle pose", "Dolphin pose"],
+        correctAnswer: 2
+      },
+      {
+        question:
+          "Which pose is a 'savasana', where it relaxes the whole body and gives you space to absorb the benefits of the practice?",
+        answers: ["Corpse pose", "Downward facing dog", "Tree pose"],
+        correctAnswer: 0
+      }
+    ]
+  };
+
+  let score = 0;
+  let questionNumber = 0;
+
+  function updateQuestionNumber() {
+    questionNumber++;
+    //$(".questionNumber").text(questionNumber + 1);
+  }
+  //
+  /* when a user clicks on start quiz button */
+  function startQuiz() {
+    $(".startquiz").on("click", function(event) {
+      //console.log("you clicked start");
+      renderAQuestion(questionNumber);
+    });
+  }
+  /*displays the question*/
+  function renderAQuestion() {
+    const question = STORE.questions[questionNumber].question;
+    const answers = STORE.questions[questionNumber].answers;
+    const questionHTML = $(`
+      <form id="js-question">
+        <fieldset>
+          <legend>
+            ${question}
+          </legend>
+        </fieldset>
+        <fieldset class="answers">
+        ${answers
+          .map(
+            a => `
+            <input
+              type="radio"
+              id="questionAnswers"
+              name="questionAnswers"
+              value="${a}"
+              required
+            />${a}<br />
+         `
+          )
+          .join("")}<br>
+        <button type="submit">Submit</button>
+        </fieldset>
+      </form>`);
+    $(".enter").html(questionHTML);
+  }
+
+  function loadResult() {
+    const resultHTML = $(` <img
+    src="images/mountain.jpg"
+    alt="namaste image"
+    width="300"
+    height="195.82"
+  />
+  <p>The correct answer is Mounain Pose</p>
+  <button class="next">Next</button>`);
+    $(".enter").html(resultHTML);
+    nextQuestion();
+  }
+
+  function answerQuestion() {
+    $(".enter").on("submit", function(event) {
+      event.preventDefault();
+      const correctAnswer =
+        STORE.questions[questionNumber].answers[
+          STORE.questions[questionNumber].correctAnswer
+        ];
+      const answerChoice = $("input:checked").val();
+      console.log("the correct answer is " + correctAnswer);
+      if (answerChoice === correctAnswer) {
+        console.log("Yes it is correct " + $("input:checked").val());
+      } else {
+        console.log("No it is not correct");
+      }
+      loadResult();
+      updateQuestionNumber();
+    });
+  }
+
+  function nextQuestion() {
+    $(".enter").on("click", "button.next", function(event) {
+      event.preventDefault();
+      console.log("you clicked next");
+      renderAQuestion(questionNumber);
+    });
+  }
+
+  function handleQuizApp() {
+    startQuiz();
+    answerQuestion();
+  }
+
+  $(handleQuizApp());

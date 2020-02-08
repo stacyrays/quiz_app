@@ -90,10 +90,12 @@ $(function() {
   function startQuiz() {
     $(".startquiz").on("click", function(event) {
       //console.log("you clicked start");
+
+      //call render for first question
       renderAQuestion(questionNumber);
     });
   }
-  /*displays the question*/
+  //build a question
   function renderAQuestion() {
     const question = STORE.questions[questionNumber].question;
     const answers = STORE.questions[questionNumber].answers;
@@ -128,6 +130,7 @@ $(function() {
     $(".enter").html(questionHTML);
   }
 
+  //answer a question and check if it's correct or wrong
   function answerQuestion() {
     $(".enter").on("submit", function(event) {
       event.preventDefault();
@@ -136,8 +139,9 @@ $(function() {
           STORE.questions[questionNumber].correctAnswer
         ];
       const correctImg = STORE.questions[questionNumber].correctImg;
-      //console.log("correct img " + correctImg);
       const answerChoice = $("input:checked").val();
+
+      //display correct or wrong html
       if (answerChoice === correctAnswer) {
         console.log("correct is runing");
         const resultHTML = $(`
@@ -153,7 +157,9 @@ $(function() {
   />
   <p>You got it right! The correct answer is ${correctAnswer}</p>
   <button class="next">Next</button>`);
+        //update the html with this content
         $(".enter").html(resultHTML);
+        //call next question
         nextQuestion();
       } else {
         console.log("No it is not correct");
@@ -170,13 +176,17 @@ $(function() {
   />
   <p>Sorry you got it wrong! The correct answer is ${correctAnswer}</p>
   <button class="next">Next</button>`);
+
+        //update the html with this content
         $(".enter").html(resultHTML);
+        //call next question
         nextQuestion();
       }
       updateQuestionNumber();
     });
   }
 
+  //load the next question
   function nextQuestion() {
     $(".enter").on("click", "button.next", function(event) {
       event.preventDefault();
@@ -184,11 +194,11 @@ $(function() {
       renderAQuestion(questionNumber);
     });
   }
-
+  //prep callout of functions for app
   function handleQuizApp() {
     startQuiz();
     answerQuestion();
   }
-
+  //call out the top level funtion to run app
   $(handleQuizApp());
 });

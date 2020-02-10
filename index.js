@@ -66,14 +66,14 @@ $(function() {
           "Which pose helps build strength in your upper body in preparation for a headstand and forearm stand? It can also help calm your mind and relieve stress...",
         answers: ["Camel pose", "Bound ankle pose", "Dolphin pose"],
         correctAnswer: 2,
-        correctImg: "images/dolphin.jpg"
+        correctImg: "dolphin.jpg"
       },
       {
         question:
           "Which pose is a 'savasana', where it relaxes the whole body and gives you space to absorb the benefits of the practice?",
         answers: ["Corpse pose", "Downward facing dog", "Tree pose"],
         correctAnswer: 0,
-        correctImg: "images/corpse.jpg"
+        correctImg: "corpse.jpg"
       }
     ]
   };
@@ -97,12 +97,14 @@ $(function() {
   }
   //build a question
   function renderAQuestion() {
-    const question = STORE.questions[questionNumber].question;
-    const answers = STORE.questions[questionNumber].answers;
-    const questionHTML = $(`<p>
+    console.log(STORE.questions.length);
+    if (questionNumber < STORE.questions.length) {
+      const question = STORE.questions[questionNumber].question;
+      const answers = STORE.questions[questionNumber].answers;
+      const questionHTML = $(`<p>
     Question <strong>${questionNumber +
       1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
-    <strong>1</strong>
+    <strong>${score}</strong>
   </p>
       <form id="js-question">
         <fieldset>
@@ -124,10 +126,13 @@ $(function() {
          `
           )
           .join("")}<br>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit Answer</button>
         </fieldset>
       </form>`);
-    $(".enter").html(questionHTML);
+      $(".enter").html(questionHTML);
+    } else {
+      loadFinalResult();
+    }
   }
 
   //answer a question and check if it's correct or wrong
@@ -144,11 +149,12 @@ $(function() {
       //display correct or wrong html
       if (answerChoice === correctAnswer) {
         console.log("correct is runing");
+        score++;
         const resultHTML = $(`
         <p>
         Question <strong>${questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
-        <strong>1</strong>
+        <strong>${score}</strong>
       </p><img
     src="images/${correctImg}"
     alt="namaste image"
@@ -156,7 +162,7 @@ $(function() {
     height="195.82"
   />
   <p>You got it right! The correct answer is ${correctAnswer}</p>
-  <button class="next">Next</button>`);
+  <button class="next">Next Question</button>`);
         //update the html with this content
         $(".enter").html(resultHTML);
         //call next question
@@ -167,7 +173,7 @@ $(function() {
         <p>
         Question <strong>${questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
-        <strong>1</strong>
+        <strong>${score}</strong>
       </p><img
         src="images/${correctImg}"
     alt="namaste image"
@@ -175,7 +181,7 @@ $(function() {
     height="195.82"
   />
   <p>Sorry you got it wrong! The correct answer is ${correctAnswer}</p>
-  <button class="next">Next</button>`);
+  <button class="next">Next Question</button>`);
 
         //update the html with this content
         $(".enter").html(resultHTML);
@@ -191,6 +197,38 @@ $(function() {
     $(".enter").on("click", "button.next", function(event) {
       event.preventDefault();
       console.log("you clicked next");
+      renderAQuestion(questionNumber);
+    });
+  }
+
+  //load final results
+  function loadFinalResult() {
+    let finalResultHTML = `<img
+      src=""
+      alt="namaste image"
+      width="300"
+      height="195.82"
+    />
+    <p>Your score is ${score}! You are a brilliant yogi!</p>
+    <button class="restart">Restart Quiz</button>`;
+
+    if (score <= 5) {
+      finalResultHTML = `<img
+        src=""
+        alt="namaste image"
+        width="300"
+        height="195.82"
+      />
+      <p>Your score is ${score}! You need more practice :(</p>
+      <button class="restart">Restart Quiz</button>`;
+    }
+    $(".enter").html(finalResultHTML);
+
+    $(".enter").on("click", ".restart", function(event) {
+      //console.log("you clicked start");
+      questionNumber = 0;
+      score = 0;
+      //call render for first question
       renderAQuestion(questionNumber);
     });
   }

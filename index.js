@@ -42,14 +42,14 @@ $(function() {
       },
       {
         question:
-          "Which pose opens the entire front of the body, where it strengthens the muscles in your back, shoulders, and hamstrings? (Hint: it’s a backbend)",
+          "Which pose opens the entire front of the body, where it strengthens the muscles in your back, shoulders, and hamstrings? (Hint: it&#39s a backbend)",
         answers: ["Camel pose", "Wheel pose", "Mountain pose"],
         correctAnswer: 1,
         correctImg: "wheel.jpg"
       },
       {
         question:
-          "Which pose strengthens your shoulders, upper back, and abdominals?  It also promotes core and scapular stability, which is helpful if you’re working on inversions or arm balances...",
+          "Which pose strengthens your shoulders, upper back, and abdominals?  It also promotes core and scapular stability, which is helpful if you&#39re working on inversions or arm balances...",
         answers: ["Side plank", "Warrior three", "Boat pose"],
         correctAnswer: 0,
         correctImg: "sideplank.jpg"
@@ -70,7 +70,7 @@ $(function() {
       },
       {
         question:
-          "Which pose is a 'savasana', where it relaxes the whole body and gives you space to absorb the benefits of the practice?",
+          "Which pose is a &#39savasana&#39, where it relaxes the whole body and gives you space to absorb the benefits of the practice?",
         answers: ["Corpse pose", "Downward facing dog", "Tree pose"],
         correctAnswer: 0,
         correctImg: "corpse.jpg"
@@ -83,7 +83,6 @@ $(function() {
 
   function updateQuestionNumber() {
     questionNumber++;
-    //$(".questionNumber").text(questionNumber + 1);
   }
   //
   /* when a user clicks on start quiz button */
@@ -96,6 +95,7 @@ $(function() {
       renderAQuestion(questionNumber);
     });
   }
+
   //build a question
   function renderAQuestion() {
     console.log(STORE.questions.length);
@@ -127,8 +127,8 @@ $(function() {
          `
           )
           .join("")}<br>
-        <button type="submit">Submit Answer</button>
         </fieldset>
+        <button type="submit">Submit Answer</button>
       </form>`);
       $(".enter").html(questionHTML);
     } else {
@@ -205,7 +205,7 @@ $(function() {
   //load final results
   function loadFinalResult() {
     let finalResultHTML = `<img
-      src=""
+      src="images/win.jpg"
       alt="namaste image"
       width="300"
       height="195.82"
@@ -215,7 +215,7 @@ $(function() {
 
     if (score <= 5) {
       finalResultHTML = `<img
-        src=""
+        src="images/lose.jpg"
         alt="namaste image"
         width="300"
         height="195.82"

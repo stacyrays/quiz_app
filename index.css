@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 30px;
   text-align: center;
 }
@@ -11,12 +11,15 @@ body {
 h1 {
   color: teal;
   padding: 0;
-  margin: 5px;
+  margin: 10px;
 }
 h2 {
   color: gray;
   padding: 0;
   margin: 5px;
+}
+form {
+  max-width: 400px;
 }
 button,
 input[type="text"] {
@@ -71,6 +74,7 @@ button,
 [type="button"],
 [type="submit"] {
   margin-top: 20px;
+  min-width: 160px;
 }
 
 [type="radio"] {
@@ -101,7 +105,7 @@ h1.inside {
 legend {
   font-weight: 600;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 26px;
 }
 
 fieldset {
@@ -111,4 +115,11 @@ fieldset {
 
 fieldset.answers {
   margin-top: 10px;
+  text-align: left;
+  padding-left: 30%;
+}
+
+header img {
+  width: 30%;
+  height: 30%;
 }

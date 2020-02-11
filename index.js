@@ -81,24 +81,25 @@ $(function() {
   let score = 0;
   let questionNumber = 0;
 
+  //update the question number
   function updateQuestionNumber() {
     questionNumber++;
   }
-  //
-  /* when a user clicks on start quiz button */
+
+  //user clicks on start quiz button
   function startQuiz() {
     $(".startquiz").on("click", function(event) {
-      //console.log("you clicked start");
       questionNumber = 0;
       score = 0;
-      //call render for first question
+
+      //render a question
       renderAQuestion(questionNumber);
     });
   }
 
   //build a question
   function renderAQuestion() {
-    console.log(STORE.questions.length);
+    //if questioNumber has not reached beyond STORE length then pull in a new question
     if (questionNumber < STORE.questions.length) {
       const question = STORE.questions[questionNumber].question;
       const answers = STORE.questions[questionNumber].answers;
@@ -132,14 +133,17 @@ $(function() {
       </form>`);
       $(".enter").html(questionHTML);
     } else {
+      //if questionNumber has reached final one, then load the final results
       loadFinalResult();
     }
   }
 
-  //answer a question and check if it's correct or wrong
+  //answer a question and check if it's correct or not
   function answerQuestion() {
     $(".enter").on("submit", function(event) {
       event.preventDefault();
+
+      //gather variables for correctAnswer etc
       const correctAnswer =
         STORE.questions[questionNumber].answers[
           STORE.questions[questionNumber].correctAnswer
@@ -147,7 +151,7 @@ $(function() {
       const correctImg = STORE.questions[questionNumber].correctImg;
       const answerChoice = $("input:checked").val();
 
-      //display correct or wrong html
+      //based on if answerChoice is correctAnswer then show the correct html
       if (answerChoice === correctAnswer) {
         console.log("correct is runing");
         score++;
@@ -164,12 +168,13 @@ $(function() {
   />
   <p>You got it right! The correct answer is ${correctAnswer}</p>
   <button class="next">Next Question</button>`);
-        //update the html with this content
+
+        //replace the html with this content
         $(".enter").html(resultHTML);
+
         //call next question
         nextQuestion();
       } else {
-        console.log("No it is not correct");
         const resultHTML = $(`
         <p>
         Question <strong>${questionNumber +
@@ -184,20 +189,21 @@ $(function() {
   <p>Sorry you got it wrong! The correct answer is ${correctAnswer}</p>
   <button class="next">Next Question</button>`);
 
-        //update the html with this content
+        //replace the html with this content
         $(".enter").html(resultHTML);
-        //call next question
+
+        //call next question function
         nextQuestion();
       }
+      //update the question numer to the next one
       updateQuestionNumber();
     });
   }
 
-  //load the next question
+  //loads the next question
   function nextQuestion() {
     $(".enter").on("click", "button.next", function(event) {
       event.preventDefault();
-      console.log("you clicked next");
       renderAQuestion(questionNumber);
     });
   }
@@ -223,18 +229,14 @@ $(function() {
       <p>Your score is ${score}! You need more practice :(</p>
       <button class="restart">Restart Quiz</button>`;
     }
+    //replace html with new final result
     $(".enter").html(finalResultHTML);
 
     $(".enter").on("click", ".restart", function(event) {
-      //console.log("you clicked start");
       restartQuiz();
-
-      // //call render for first question
-      // renderAQuestion(questionNumber);
     });
   }
   function restartQuiz() {
-    console.log("restarting quiz");
     const restartHTML = `<h2>
     Test your knowledge on yoga poses
   </h2>

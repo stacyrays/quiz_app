@@ -8,14 +8,14 @@ body {
   text-align: center;
 }
 
-h1 {
+h1,
+h2 {
   color: #156c5e;
   padding: 0;
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 h2 {
-  color: #4d9691;
   padding: 0;
   margin: 5px;
 }
@@ -40,11 +40,10 @@ button:hover {
 }
 
 main {
-  padding: 30px;
   max-width: 800px;
   margin: 0 auto;
   border-radius: 12px;
-  background: #d6eae8;
+  /*background: #d6eae8;*/
 }
 
 .shopping-list {

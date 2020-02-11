@@ -1,5 +1,7 @@
 $(function() {
   const STORE = {
+    //score: 0,
+    //questionNumber: 0,
     questions: [
       {
         question:
@@ -127,14 +129,15 @@ $(function() {
         <fieldset class="answers">
         ${answers
           .map(
-            a => `
+            (a, index) => `
             <input
               type="radio"
-              id="questionAnswers"
+              id="option${index}"
               name="questionAnswers"
               value="${a}"
               required
-            />${a}<br />
+            /><label for="option${index}">
+            ${a}</label><br />
          `
           )
           .join("")}<br>

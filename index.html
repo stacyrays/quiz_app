@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <title>Yoga Pose Quiz</title>
-    <link rel="shortcut icon" href="#" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"
@@ -20,25 +19,22 @@
   </head>
 
   <body>
+    <header role="banner">
+      <h1>Yoga Poses & Benefits</h1>
+      <img
+        src="images/hero.jpg"
+        alt="hero image of meditating woman"
+        width="1196"
+        height="614"
+      />
+    </header>
     <main role="main">
-      <header>
-        <h1>Yoga Poses & Benefits</h1>
-        <img
-          src="images/hero.jpg"
-          alt="hero image of meditating woman"
-          width="1196"
-          height="614"
-        />
-      </header>
-      <div class="enter">
+      <section class="enter" aria-live="polite">
         <h2>
           Test your knowledge on yoga poses
         </h2>
         <button class="startquiz">Start Quiz</button>
-      </div>
-      <!--<div class="score_qnumber">
-        <p class="score">Your score: 0</p>
-        <p class="qnumber">You are on question 1/10</p>-->
+      </section>
     </main>
     <script
       type="text/javascript"

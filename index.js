@@ -90,7 +90,8 @@ $(function() {
   function startQuiz() {
     $(".startquiz").on("click", function(event) {
       //console.log("you clicked start");
-
+      questionNumber = 0;
+      score = 0;
       //call render for first question
       renderAQuestion(questionNumber);
     });
@@ -226,11 +227,20 @@ $(function() {
 
     $(".enter").on("click", ".restart", function(event) {
       //console.log("you clicked start");
-      questionNumber = 0;
-      score = 0;
-      //call render for first question
-      renderAQuestion(questionNumber);
+      restartQuiz();
+
+      // //call render for first question
+      // renderAQuestion(questionNumber);
     });
+  }
+  function restartQuiz() {
+    console.log("restarting quiz");
+    const restartHTML = `<h2>
+    Test your knowledge on yoga poses
+  </h2>
+  <button class="startquiz">Start Quiz</button>`;
+    $(".enter").html(restartHTML);
+    startQuiz();
   }
   //prep callout of functions for app
   function handleQuizApp() {

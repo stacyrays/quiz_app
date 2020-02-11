@@ -6,28 +6,32 @@ $(function() {
           "Which pose promotes balance and directs your attention to the present moment (is the backbone for most other poses)?",
         answers: ["Child's pose", "Mountain pose", "Downward facing dog"],
         correctAnswer: 1,
-        correctImg: "mountain.jpg"
+        correctImg: "mountain.jpg",
+        alt: "mountain pose image"
       },
       {
         question:
           "Which pose strengthens your legs, upper back, and shoulders?",
         answers: ["Halfmoon pose", "Chair pose", "Warrior one"],
         correctAnswer: 1,
-        correctImg: "chair.jpg"
+        correctImg: "chair.jpg",
+        alt: "chair pose image"
       },
       {
         question:
           "Which pose opens up your chest and shoulders, while stretching the abdominals and hip flexors?",
         answers: ["Plank pose", "Seated forward fold", "Upward facing dog"],
         correctAnswer: 2,
-        correctImg: "upward.jpg"
+        correctImg: "upward.jpg",
+        alt: "upward dog image"
       },
       {
         question:
           "Which pose helps improve concentration and your ability to balance by strengthening the arches of the feet and the outer hips?",
         answers: ["Tree pose", "Bound ankle pose", "Warrior two"],
         correctAnswer: 0,
-        correctImg: "tree.jpg"
+        correctImg: "tree.jpg",
+        alt: "tree pose image"
       },
       {
         question:
@@ -38,42 +42,48 @@ $(function() {
           "Seated forward fold"
         ],
         correctAnswer: 1,
-        correctImg: "sidestretch.jpg"
+        correctImg: "sidestretch.jpg",
+        alt: "sidestretch image"
       },
       {
         question:
           "Which pose opens the entire front of the body, where it strengthens the muscles in your back, shoulders, and hamstrings? (Hint: it&#39s a backbend)",
         answers: ["Camel pose", "Wheel pose", "Mountain pose"],
         correctAnswer: 1,
-        correctImg: "wheel.jpg"
+        correctImg: "wheel.jpg",
+        alt: "wheel pose image"
       },
       {
         question:
           "Which pose strengthens your shoulders, upper back, and abdominals?  It also promotes core and scapular stability, which is helpful if you&#39re working on inversions or arm balances...",
         answers: ["Side plank", "Warrior three", "Boat pose"],
         correctAnswer: 0,
-        correctImg: "sideplank.jpg"
+        correctImg: "sideplank.jpg",
+        alt: "sideplank image"
       },
       {
         question:
           "Which pose strengthens your legs, arms, and back muscles? It also gives your chest, shoulders, neck, thighs, and ankles a nice stretch...",
         answers: ["Warrior one", "Seated forward fold", "Dolphin pose"],
         correctAnswer: 0,
-        correctImg: "warrior1.jpg"
+        correctImg: "warrior1.jpg",
+        alt: "warrior one image"
       },
       {
         question:
           "Which pose helps build strength in your upper body in preparation for a headstand and forearm stand? It can also help calm your mind and relieve stress...",
         answers: ["Camel pose", "Bound ankle pose", "Dolphin pose"],
         correctAnswer: 2,
-        correctImg: "dolphin.jpg"
+        correctImg: "dolphin.jpg",
+        alt: "dolphin pose image"
       },
       {
         question:
           "Which pose is a &#39savasana&#39, where it relaxes the whole body and gives you space to absorb the benefits of the practice?",
         answers: ["Corpse pose", "Downward facing dog", "Tree pose"],
         correctAnswer: 0,
-        correctImg: "corpse.jpg"
+        correctImg: "corpse.jpg",
+        alt: "corpse pose image"
       }
     ]
   };
@@ -149,6 +159,7 @@ $(function() {
           STORE.questions[questionNumber].correctAnswer
         ];
       const correctImg = STORE.questions[questionNumber].correctImg;
+      const correctAlt = STORE.questions[questionNumber].alt;
       const answerChoice = $("input:checked").val();
 
       //based on if answerChoice is correctAnswer then show the correct html
@@ -162,7 +173,7 @@ $(function() {
         <strong>${score}</strong>
       </p><img
     src="images/${correctImg}"
-    alt="namaste image"
+    alt="${correctAlt}"
     width="300"
     height="195.82"
   />
@@ -182,7 +193,7 @@ $(function() {
         <strong>${score}</strong>
       </p><img
         src="images/${correctImg}"
-    alt="namaste image"
+    alt="${correctAlt}"
     width="300"
     height="195.82"
   />
@@ -212,7 +223,7 @@ $(function() {
   function loadFinalResult() {
     let finalResultHTML = `<img
       src="images/win.jpg"
-      alt="namaste image"
+      alt="awesome strong plank pose"
       width="300"
       height="195.82"
     />
@@ -222,7 +233,7 @@ $(function() {
     if (score <= 5) {
       finalResultHTML = `<img
         src="images/lose.jpg"
-        alt="namaste image"
+        alt="sad dog face"
         width="300"
         height="195.82"
       />

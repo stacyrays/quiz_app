@@ -13,12 +13,17 @@ h2 {
   color: #156c5e;
   padding: 0;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 h2 {
   padding: 0;
   margin: 5px;
+  color: #898989;
+}
+
+.red {
+  color: #a40202;
 }
 
 p {
@@ -135,16 +140,8 @@ img {
   border-radius: 12px;
   box-shadow: -2px 1px 23px -4px rgba(0, 0, 0, 0.4);
   margin-top: 10px;
-  margin-bottom: 5px;
 }
 
 .enter img {
   margin-bottom: 15px;
 }
-
-/*@media only screen and (max-width: 600px) {
-  .answer {
-    width: 80%;
-    height: 80%;
-  }
-}*/

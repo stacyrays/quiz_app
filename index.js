@@ -175,7 +175,7 @@ $(function() {
     width="300"
     height="195.82"
   />
-  <p><strong>You got it right!</strong> </p><p>The correct answer is ${correctAnswer}</p>
+  <h2>You got it right!</h2><p>The correct answer is ${correctAnswer}</p>
   <button class="next">Next Question</button>`);
 
         //replace the html with this content
@@ -195,7 +195,7 @@ $(function() {
     width="300"
     height="195.82"
   />
-  <p><strong>Sorry you got it wrong!</strong></p><p>The correct answer is ${correctAnswer}</p>
+  <h2 class="red">You got it wrong!</h2><p>The correct answer is ${correctAnswer}</p>
   <button class="next">Next Question</button>`);
 
         //replace the html with this content

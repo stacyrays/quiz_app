@@ -23,7 +23,7 @@ h2 {
 }
 
 .red {
-  color: #a40202;
+  color: orangered;
 }
 
 p {
@@ -144,4 +144,5 @@ img {
 
 .enter img {
   margin-bottom: 15px;
+  margin-top: 15px;
 }

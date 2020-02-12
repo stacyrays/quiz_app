@@ -169,13 +169,13 @@ $(function() {
         Question <strong>${STORE.questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
         <strong>${STORE.score}</strong>
-      </p><img
-    src="images/${correctImg}"
-    alt="${correctAlt}"
-    width="300"
-    height="195.82"
-  />
-  <h2>You got it right!</h2><p>The correct answer is ${correctAnswer}</p>
+      </p>
+  <h2>You got it right!</h2><p>The correct answer is ${correctAnswer}</p><img
+  src="images/${correctImg}"
+  alt="${correctAlt}"
+  width="300"
+  height="195.82"
+/>
   <button class="next">Next Question</button>`);
 
         //replace the html with this content
@@ -189,13 +189,13 @@ $(function() {
         Question <strong>${STORE.questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
         <strong>${STORE.score}</strong>
-      </p><img
-        src="images/${correctImg}"
-    alt="${correctAlt}"
-    width="300"
-    height="195.82"
-  />
-  <h2 class="red">You got it wrong!</h2><p>The correct answer is ${correctAnswer}</p>
+      </p>
+  <h2 class="red">You got it wrong!</h2><p>The correct answer is ${correctAnswer}</p><img
+  src="images/${correctImg}"
+alt="${correctAlt}"
+width="300"
+height="195.82"
+/>
   <button class="next">Next Question</button>`);
 
         //replace the html with this content

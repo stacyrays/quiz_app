@@ -1,7 +1,7 @@
 $(function() {
   const STORE = {
-    //score: 0,
-    //questionNumber: 0,
+    score: 0,
+    questionNumber: 0,
     questions: [
       {
         question:
@@ -90,35 +90,32 @@ $(function() {
     ]
   };
 
-  let score = 0;
-  let questionNumber = 0;
-
   //update the question number
   function updateQuestionNumber() {
-    questionNumber++;
+    STORE.questionNumber++;
   }
 
   //user clicks on start quiz button
   function startQuiz() {
     $(".startquiz").on("click", function(event) {
-      questionNumber = 0;
-      score = 0;
+      STORE.questionNumber = 0;
+      STORE.score = 0;
 
       //render a question
-      renderAQuestion(questionNumber);
+      renderAQuestion(STORE.questionNumber);
     });
   }
 
   //build a question
   function renderAQuestion() {
     //if questioNumber has not reached beyond STORE length then pull in a new question
-    if (questionNumber < STORE.questions.length) {
-      const question = STORE.questions[questionNumber].question;
-      const answers = STORE.questions[questionNumber].answers;
+    if (STORE.questionNumber < STORE.questions.length) {
+      const question = STORE.questions[STORE.questionNumber].question;
+      const answers = STORE.questions[STORE.questionNumber].answers;
       const questionHTML = $(`<p>
-    Question <strong>${questionNumber +
+    Question <strong>${STORE.questionNumber +
       1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
-    <strong>${score}</strong>
+    <strong>${STORE.score}</strong>
   </p>
       <form id="js-question">
         <fieldset>
@@ -155,25 +152,23 @@ $(function() {
   function answerQuestion() {
     $(".enter").on("submit", function(event) {
       event.preventDefault();
-
       //gather variables for correctAnswer etc
       const correctAnswer =
-        STORE.questions[questionNumber].answers[
-          STORE.questions[questionNumber].correctAnswer
+        STORE.questions[STORE.questionNumber].answers[
+          STORE.questions[STORE.questionNumber].correctAnswer
         ];
-      const correctImg = STORE.questions[questionNumber].correctImg;
-      const correctAlt = STORE.questions[questionNumber].alt;
+      const correctImg = STORE.questions[STORE.questionNumber].correctImg;
+      const correctAlt = STORE.questions[STORE.questionNumber].alt;
       const answerChoice = $("input:checked").val();
 
       //based on if answerChoice is correctAnswer then show the correct html
       if (answerChoice === correctAnswer) {
-        console.log("correct is runing");
-        score++;
+        STORE.score = STORE.score + 1;
         const resultHTML = $(`
         <p>
-        Question <strong>${questionNumber +
+        Question <strong>${STORE.questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
-        <strong>${score}</strong>
+        <strong>${STORE.score}</strong>
       </p><img
     src="images/${correctImg}"
     alt="${correctAlt}"
@@ -191,9 +186,9 @@ $(function() {
       } else {
         const resultHTML = $(`
         <p>
-        Question <strong>${questionNumber +
+        Question <strong>${STORE.questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
-        <strong>${score}</strong>
+        <strong>${STORE.score}</strong>
       </p><img
         src="images/${correctImg}"
     alt="${correctAlt}"
@@ -216,6 +211,7 @@ $(function() {
 
   //loads the next question
   function nextQuestion() {
+    let questionNumber = STORE.questionNumber;
     $(".enter").on("click", "button.next", function(event) {
       event.preventDefault();
       renderAQuestion(questionNumber);
@@ -230,17 +226,17 @@ $(function() {
       width="300"
       height="195.82"
     />
-    <p>Your score is ${score}! You are a brilliant yogi!</p>
+    <p>Your score is ${STORE.score}! You are a brilliant yogi!</p>
     <button class="restart">Restart Quiz</button>`;
 
-    if (score <= 5) {
+    if (STORE.score <= 5) {
       finalResultHTML = `<img
         src="images/lose.jpg"
         alt="sad dog face"
         width="300"
         height="195.82"
       />
-      <p>Your score is ${score}! You need more practice :(</p>
+      <p>Your score is ${STORE.score}! You need more practice :(</p>
       <button class="restart">Restart Quiz</button>`;
     }
     //replace html with new final result

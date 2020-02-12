@@ -112,7 +112,7 @@ $(function() {
     if (STORE.questionNumber < STORE.questions.length) {
       const question = STORE.questions[STORE.questionNumber].question;
       const answers = STORE.questions[STORE.questionNumber].answers;
-      const questionHTML = $(`<p>
+      const questionHTML = $(`<p class="details">
     Question <strong>${STORE.questionNumber +
       1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
     <strong>${STORE.score}</strong>
@@ -165,7 +165,7 @@ $(function() {
       if (answerChoice === correctAnswer) {
         STORE.score = STORE.score + 1;
         const resultHTML = $(`
-        <p>
+        <p class="details">
         Question <strong>${STORE.questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
         <strong>${STORE.score}</strong>
@@ -175,7 +175,7 @@ $(function() {
     width="300"
     height="195.82"
   />
-  <p>You got it right! The correct answer is ${correctAnswer}</p>
+  <p><strong>You got it right!</strong> </p><p>The correct answer is ${correctAnswer}</p>
   <button class="next">Next Question</button>`);
 
         //replace the html with this content
@@ -185,7 +185,7 @@ $(function() {
         nextQuestion();
       } else {
         const resultHTML = $(`
-        <p>
+        <p class="details">
         Question <strong>${STORE.questionNumber +
           1}</strong>(of 10) &nbsp;&nbsp;&nbsp;Score
         <strong>${STORE.score}</strong>
@@ -195,7 +195,7 @@ $(function() {
     width="300"
     height="195.82"
   />
-  <p>Sorry you got it wrong! The correct answer is ${correctAnswer}</p>
+  <p><strong>Sorry you got it wrong!</strong></p><p>The correct answer is ${correctAnswer}</p>
   <button class="next">Next Question</button>`);
 
         //replace the html with this content
@@ -226,7 +226,7 @@ $(function() {
       width="300"
       height="195.82"
     />
-    <p>Your score is ${STORE.score}! You are a brilliant yogi!</p>
+    <p><strong>Your score is ${STORE.score}!</strong></p> <p>You are a brilliant yogi!</p>
     <button class="restart">Restart Quiz</button>`;
 
     if (STORE.score <= 5) {
@@ -236,7 +236,7 @@ $(function() {
         width="300"
         height="195.82"
       />
-      <p>Your score is ${STORE.score}! You need more practice :(</p>
+      <p><strong>Your score is ${STORE.score}!</strong> </p><p>You need more practice :(</p>
       <button class="restart">Restart Quiz</button>`;
     }
     //replace html with new final result
